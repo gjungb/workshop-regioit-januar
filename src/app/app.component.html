@@ -1,3 +1,7 @@
 <h1>Willkommen {{ title }}</h1>
 
-<pi-led-list></pi-led-list>
+<pi-color-form></pi-color-form>
+
+<pi-led-list *ngIf="visible"></pi-led-list>
+
+<button (click)="visible = !visible">Toggle</button>

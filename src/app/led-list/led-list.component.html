@@ -1,11 +1,15 @@
 <p>led-list works!</p>
 
-<table>
+<table *ngIf="leds$ | async as things; else loader">
   <tbody>
     <tr>
-      <td *ngFor="let thing of leds">
-        <pi-led [piLed]="thing"></pi-led>
+      <td *ngFor="let thing of things">
+        <pi-led (ledChange)="updateLedColor($event)" [piLed]="thing"></pi-led>
       </td>
     </tr>
   </tbody>
 </table>
+
+<ng-template #loader>
+  <p><strong>Ist am Laden...</strong></p>
+</ng-template>

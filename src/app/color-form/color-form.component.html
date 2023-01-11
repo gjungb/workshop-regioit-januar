@@ -1,0 +1,14 @@
+<p>color-form works!</p>
+
+<!-- Template driven -->
+<form #myForm="ngForm" (ngSubmit)="updateColor(myForm.value)">
+    <input #myColor="ngModel" type="text" [(ngModel)]="value" name="color" required minlength="3">
+    <p *ngIf="myColor.invalid">Bitte ausfüllen!</p>
+    <button [disabled]="myForm.invalid" type="submit">Absenden</button>
+</form>
+
+<!-- Reactive -->
+<form [formGroup]="colorForm">
+    <input type="text" formControlName="color">
+    <button [disabled]="colorForm.invalid" type="submit">Absenden</button>
+</form>
